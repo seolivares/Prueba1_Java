@@ -6,16 +6,13 @@ public class Paciente {
     private String nombre;
     private int edad;
     private char sexo;
-    private double altura;
     private int[] pesoMensual;
 
-
-    public Paciente(String dni, String nombre, int edad, char sexo, double altura) {
+    public Paciente(String dni, String nombre, int edad, char sexo) {
         this.dni = dni;
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
-        this.altura = altura;
         this.pesoMensual = new int[12];
 
         for (int i=0;i<pesoMensual.length;i++){
@@ -67,14 +64,6 @@ public class Paciente {
         this.pesoMensual = pesoMensual;
     }
 
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
     public int menorPesoMensual() {
         int contMes = 0;
 
@@ -90,17 +79,15 @@ public class Paciente {
         return contMes;
     }
 
-    public double indiceMasaCorporal(int mesX) {
+    public double indiceMasaCorporal(int mesX, double estPaciente) {
         double indiceMes = 0;
 
-        indiceMes = pesoMensual[mesX-1] / (altura*altura);
+        indiceMes = pesoMensual[mesX-1] / (estPaciente*estPaciente);
 
         return indiceMes;
     }
 
     public int[] menosDeXKilos(int Xkilos){
-        //int[] pesaMenos;
-
         int contador = 0;
 
         // Contar cuántos meses para nuevo arreglo
@@ -144,5 +131,4 @@ public class Paciente {
 
         return condicion;
     }
-
 }
